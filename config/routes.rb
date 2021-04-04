@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root :to => "homes#top"
   get "home/about" => "homes#about"
+  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
 
   resources :books, only: [:index, :show, :edit, :create, :destroy, :update] do
     resource :favorites, only: [:create, :destroy]
